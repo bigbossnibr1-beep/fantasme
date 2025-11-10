@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crimson Dominion - Vidéos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+  <header class="flex items-center justify-between px-10 py-5 border-b border-gray-700">
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24">
+        <path d="M12 0L22.3923 6V18L12 24L1.6077 18V6L12 0Z" fill="var(--primary)" />
+        <path d="M12 4.09L19.33 8.55V15.45L12 19.91L4.66 15.45V8.55L12 4.09Z" fill="#0e0305" />
+      </svg>
+      <h1 class="text-lg font-bold">FANTASME MAROCAIN</h1>
+    </div>
+
+    <nav class="flex items-center gap-8 text-sm">
+      <a class="hover:text-white text-gray-300" href="#">Home</a>
+      <a class="text-white">Videos</a>
+      <a class="hover:text-white text-gray-300" href="#">Events</a>
+      <a class="hover:text-white text-gray-300" href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="px-10 py-12">
+
+    <div class="text-center mb-10">
+      <h2 class="text-5xl font-bold">Dominant Videos</h2>
+      <p class="mt-2 text-gray-400">Choisissez un nom, puis débloquez la vidéo avec son code unique.</p>
+    </div>
+
+    <!-- ✅ SELECT DE CHOIX DU NOM -->
+    <div class="text-center mb-10">
+      <label class="block mb-2 text-gray-300 font-semibold">Choisir un nom :</label>
+      <select id="nameFilter" onchange="filterByName()"
+        class="px-4 py-2 rounded bg-[#1f0308] border border-gray-700 text-white">
+      </select>
+    </div>
+
+    <!-- ✅ GRILLE VIDÉO -->
+    <div id="profilesGrid"
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8"></div>
+
+  </main>
+
+  <!-- ✅ MODAL CODE SECRET -->
+  <div id="secretModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 class="text-center text-xl font-bold text-[var(--primary)] mb-3">Code Secret</h2>
+      <input id="secretInput" type="text" placeholder="Entrez le code"
+             class="w-full p-2 rounded bg-[#2b060b] border border-gray-700 text-white mb-2">
+      <p id="secretError" class="text-red-500 text-sm hidden">Code invalide.</p>
+      <div class="flex justify-between mt-4">
+        <button onclick="closeSecretModal()" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Annuler</button>
+        <button onclick="validateCode()" class="bg-[var(--primary)] hover:bg-red-700 px-4 py-2 rounded">Valider</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ MODAL VIDÉO -->
+  <div id="videoModal" class="modal hidden">
+    <div class="relative w-full max-w-4xl">
+      <h2 id="videoTitle" class="text-xl font-bold text-center mb-3 text-[var(--primary)]"></h2>
+      <video id="profileVideo" class="w-full" controls>
+        <source id="videoSource" src="" type="video/mp4">
+      </video>
+      <button onclick="closeVideoModal()"
+              class="absolute top-2 right-2 bg-gray-700 px-4 py-2 rounded hover:bg-gray-600">
+        ✕
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js">
+  </script>
+
+</body>
+</html>
